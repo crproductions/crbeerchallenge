@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "LoginViewController.h"
+#import "BeerAppUser.h"
+#import "DrinkBeerViewController.h"
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *userFirstName;
+@property (nonatomic,strong) BeerAppUser *beerAppUser;
+@property (weak, nonatomic) IBOutlet UITextField *beerNameTF;
+@property (nonatomic, strong) NSString *beerName;
+@property (nonatomic, weak) IBOutlet UIButton *beerNameButton;
+@property (nonatomic, strong) DrinkBeerViewController *drinkBeerViewController;
 
 @end

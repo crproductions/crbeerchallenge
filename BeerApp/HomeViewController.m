@@ -9,6 +9,9 @@
 #import "HomeViewController.h"
 #import "BeerAppUser.h"
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "DrinkBeerViewController.h"
+
 @interface HomeViewController ()<FBLoginViewDelegate>
 @property (nonatomic,strong) AppDelegate *appDelegate;
 
@@ -32,10 +35,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    appDelegate = [[UIApplication sharedApplication]delegate];
-    NSLog(@"Testing = %@",appDelegate.loggedInUser);
     
-    self.userFirstName.text = appDelegate.loggedInUser.first_name;
+    //self.lgvc = [[LoginViewController alloc]init];
+    
+    appDelegate = [[UIApplication sharedApplication]delegate];
+    NSLog(@"Testing = %@",appDelegate.beerAppUser.loggedInUser);
+    
+    
+    NSLog(@"Testing2 = %@",self.beerAppUser.loggedInUser);
+    
+    self.userFirstName.text = self.beerAppUser.loggedInUser.first_name;
+    
+    self.beerNameTF.delegate = self;
+    self.beerNameButton.enabled = NO;
 }
 
 
@@ -44,6 +56,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (DrinkBeerViewController *)drinkBeerViewController
+{
+    if (!_drinkBeerViewController) _drinkBeerViewController = [[DrinkBeerViewController alloc] init];
+    
+    _drinkBeerViewController.beerName = self.beerNameTF.text;
+    _drinkBeerViewController.beerUser = self.beerAppUser;
+    return _drinkBeerViewController;
+    
 }
 
 #pragma mark FB Calls
@@ -71,6 +93,16 @@
         action();
     }
     
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    NSString *testString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+   
+        self.beerNameButton.enabled = testString.length > 0;
+    
+    return YES;
 }
 
 
@@ -120,14 +152,14 @@
         if (!displayedNativeDialog) {
             // Lastly, fall back on a request for permissions and a direct post using the Graph API
             [self performPublishAction:^{
-                self.beerDrank++;
+               
                 NSString *message;
                 
-                if(self.beerDrank <2)
-                    message = [NSString stringWithFormat:@"%@ drank %d bottle of beer", self.appDelegate.loggedInUser.first_name, self.beerDrank];
                 
-                else
-                    message = [NSString stringWithFormat:@"%@ drank %d bottles of beer", self.appDelegate.loggedInUser.first_name, self.beerDrank];
+                    message = [NSString stringWithFormat:@"%@ is drinking a bottle of %@", self.beerAppUser.loggedInUser.first_name, self.beerNameTF.text];
+                
+                
+            
                 
                 FBRequestConnection *connection = [[FBRequestConnection alloc] init];
                 
@@ -169,16 +201,19 @@
             alertMsg = @"Operation failed due to a connection problem, retry later.";
         }
     } else {
-        NSDictionary *resultDict = (NSDictionary *)result;
+        //NSDictionary *resultDict = (NSDictionary *)result;
         alertMsg = [NSString stringWithFormat:@"Successfully posted '%@'.", message];
-        NSString *postId = [resultDict valueForKey:@"id"];
-        if (!postId) {
-            postId = [resultDict valueForKey:@"postId"];
-        }
-        if (postId) {
-            alertMsg = [NSString stringWithFormat:@"%@\nPost ID: %@", alertMsg, postId];
-        }
+//        NSString *postId = [resultDict valueForKey:@"id"];
+//        if (!postId) {
+//            postId = [resultDict valueForKey:@"postId"];
+//        }
+//        if (postId) {
+//            alertMsg = [NSString stringWithFormat:@"%@\nPost ID: %@", alertMsg, postId];
+//        }
         alertTitle = @"Success";
+        
+        [self.navigationController pushViewController:self.drinkBeerViewController animated:YES];
+
     }
     
     if (alertTitle) {

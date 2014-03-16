@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		957F2CED18D53EB200F9D07A /* DrinkBeerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957F2CEB18D53EB200F9D07A /* DrinkBeerViewController.m */; };
+		957F2CEE18D53EB200F9D07A /* DrinkBeerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957F2CEC18D53EB200F9D07A /* DrinkBeerViewController.xib */; };
+		95850CBB18C29EDB000226A5 /* FBSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 95850CBA18C29EDB000226A5 /* FBSingleton.m */; };
+		95850CBF18C2BB41000226A5 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95850CBD18C2BB41000226A5 /* RegistrationViewController.m */; };
+		95850CC018C2BB41000226A5 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95850CBE18C2BB41000226A5 /* RegistrationViewController.xib */; };
 		95866B841890046400CB74E7 /* BeerAppUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 95866B831890046400CB74E7 /* BeerAppUser.m */; };
 		958A83821888983800DE5488 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958A83811888983800DE5488 /* FacebookSDK.framework */; };
 		95C9BA4E188242D700881114 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C9BA4D188242D700881114 /* Foundation.framework */; };
@@ -41,6 +46,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		957F2CEA18D53EB200F9D07A /* DrinkBeerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkBeerViewController.h; sourceTree = "<group>"; };
+		957F2CEB18D53EB200F9D07A /* DrinkBeerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkBeerViewController.m; sourceTree = "<group>"; };
+		957F2CEC18D53EB200F9D07A /* DrinkBeerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrinkBeerViewController.xib; sourceTree = "<group>"; };
+		95850CB918C29EDB000226A5 /* FBSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSingleton.h; sourceTree = "<group>"; };
+		95850CBA18C29EDB000226A5 /* FBSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSingleton.m; sourceTree = "<group>"; };
+		95850CBC18C2BB41000226A5 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
+		95850CBD18C2BB41000226A5 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
+		95850CBE18C2BB41000226A5 /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
 		95866B821890046400CB74E7 /* BeerAppUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeerAppUser.h; sourceTree = "<group>"; };
 		95866B831890046400CB74E7 /* BeerAppUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeerAppUser.m; sourceTree = "<group>"; };
 		958A83811888983800DE5488 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -142,6 +155,14 @@
 				95C9BA871882450500881114 /* HomeViewController.h */,
 				95C9BA881882450500881114 /* HomeViewController.m */,
 				95C9BA891882450500881114 /* HomeViewController.xib */,
+				957F2CEA18D53EB200F9D07A /* DrinkBeerViewController.h */,
+				957F2CEB18D53EB200F9D07A /* DrinkBeerViewController.m */,
+				957F2CEC18D53EB200F9D07A /* DrinkBeerViewController.xib */,
+				95850CB918C29EDB000226A5 /* FBSingleton.h */,
+				95850CBA18C29EDB000226A5 /* FBSingleton.m */,
+				95850CBC18C2BB41000226A5 /* RegistrationViewController.h */,
+				95850CBD18C2BB41000226A5 /* RegistrationViewController.m */,
+				95850CBE18C2BB41000226A5 /* RegistrationViewController.xib */,
 				95C9BA64188242D700881114 /* Images.xcassets */,
 				95C9BA61188242D700881114 /* BeerApp.xcdatamodeld */,
 				95C9BA56188242D700881114 /* Supporting Files */,
@@ -253,10 +274,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95850CC018C2BB41000226A5 /* RegistrationViewController.xib in Resources */,
 				95C9BA5A188242D700881114 /* InfoPlist.strings in Resources */,
 				95C9BA65188242D700881114 /* Images.xcassets in Resources */,
 				95C9BA861882431100881114 /* LoginViewController.xib in Resources */,
 				95C9BA8B1882450500881114 /* HomeViewController.xib in Resources */,
+				957F2CEE18D53EB200F9D07A /* DrinkBeerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,10 +299,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				95C9BA851882431100881114 /* LoginViewController.m in Sources */,
+				95850CBF18C2BB41000226A5 /* RegistrationViewController.m in Sources */,
 				95C9BA60188242D700881114 /* AppDelegate.m in Sources */,
 				95C9BA5C188242D700881114 /* main.m in Sources */,
+				957F2CED18D53EB200F9D07A /* DrinkBeerViewController.m in Sources */,
 				95C9BA8A1882450500881114 /* HomeViewController.m in Sources */,
 				95866B841890046400CB74E7 /* BeerAppUser.m in Sources */,
+				95850CBB18C29EDB000226A5 /* FBSingleton.m in Sources */,
 				95C9BA63188242D700881114 /* BeerApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

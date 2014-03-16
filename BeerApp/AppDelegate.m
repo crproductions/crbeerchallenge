@@ -14,7 +14,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize loggedInUser = _loggedInUser;
+@synthesize beerAppUser = _beerAppUser;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -30,6 +30,7 @@
     
     self.window.rootViewController = navController;
     
+    self.beerAppUser = [[BeerAppUser alloc]init];
         
     return YES;
 }

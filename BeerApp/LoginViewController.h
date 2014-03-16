@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "BeerAppUser.h"
 
 @interface LoginViewController : UIViewController
+@property (nonatomic, strong)  BeerAppUser *beerAppUser;
 
 @end

@@ -9,7 +9,7 @@
 #import "BeerAppUser.h"
 
 @implementation BeerAppUser
-@synthesize loggedInUser;
+@synthesize loggedInUser, nHeight,nWeight,birthDate,favoriteBeer,firstName,isFilledUp,LastName;
 
 
 

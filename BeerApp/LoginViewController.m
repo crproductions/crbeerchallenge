@@ -8,12 +8,14 @@
 
 #import "LoginViewController.h"
 #import "HomeViewController.h"
+#import "RegistrationViewController.h"
 #import "BeerAppUser.h"
 #import "AppDelegate.h"
 
 @interface LoginViewController ()<FBLoginViewDelegate>
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
+@property (nonatomic, strong) id<FBGraphUser> cachedUser;
 
 @end
 
@@ -55,8 +57,7 @@
     
     [loginview sizeToFit];
     
-
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,12 +66,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 #pragma mark - Facebook Login Delegate
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-   
-    HomeViewController *homeVC = [[HomeViewController alloc]init];
-    [self.navigationController pushViewController:homeVC animated:YES];
+    
     
     
    
@@ -79,11 +80,34 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
+    
+    if (![self isUser:_cachedUser equalToUser:user]){
+        _cachedUser = user;
     appDelegate = [[UIApplication sharedApplication]delegate];
-    appDelegate.loggedInUser = user;
-    NSLog(@"WHAT = %@",appDelegate.loggedInUser.first_name);
     
+//    appDelegate.beerAppUser.loggedInUser = user;
+    self.beerAppUser = [[BeerAppUser alloc]init];
+    self.beerAppUser.loggedInUser = user;
+    NSLog(@"WHAT = %@",self.beerAppUser.loggedInUser.first_name);
     
+    HomeViewController *homeVC = [[HomeViewController alloc]init];
+    homeVC.beerAppUser = self.beerAppUser;
+    [self.navigationController pushViewController:homeVC animated:YES];
+    
+    return;
+    
+    if (appDelegate.beerAppUser.isFilledUp) {
+        HomeViewController *homeVC = [[HomeViewController alloc]init];
+        [self.navigationController pushViewController:homeVC animated:YES];
+        
+    }
+    else
+    {
+        RegistrationViewController *rVC = [[RegistrationViewController alloc]init];
+        [self.navigationController pushViewController:rVC animated:YES];
+    }
+
+    }
 }
 
 
@@ -93,7 +117,10 @@
     NSLog(@"FBLoginView encountered an error=%@", error);
 }
 
-
+- (BOOL)isUser:(id<FBGraphUser>)firstUser equalToUser:(id<FBGraphUser>)secondUser {
+    return
+    [firstUser isEqual: self.beerAppUser.loggedInUser];
+}
 
 
 
